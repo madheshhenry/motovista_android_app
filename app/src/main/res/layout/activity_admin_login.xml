@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp"
+    android:background="@drawable/bg_gradient">
+
+    <ImageView
+        android:id="@+id/imgAdminLogo"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:src="@drawable/ic_admin"
+        android:layout_marginBottom="30dp"/>
+
+    <TextView
+        android:id="@+id/tvAdminLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Admin Login"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="25dp"/>
+
+    <!-- FIXED ID -->
+    <EditText
+        android:id="@+id/etAdminUser"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Admin Username"
+        android:padding="12dp"
+        android:background="@drawable/input_bg"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#DDDDDD"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/etAdminPass"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Password"
+        android:padding="12dp"
+        android:background="@drawable/input_bg"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#DDDDDD"
+        android:layout_marginBottom="20dp"
+        android:inputType="textPassword"/>
+
+
+    <Button
+        android:id="@+id/btnAdminLogin"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Login"
+        android:textAllCaps="false"
+        android:background="@drawable/btn_gradient"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="20dp"/>
+
+</LinearLayout>

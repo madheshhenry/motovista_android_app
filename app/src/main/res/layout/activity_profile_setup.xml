@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header -->
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Complete Your Profile"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="8dp"
+            android:paddingBottom="18dp" />
+
+        <!-- SECTION 1: Personal Info -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Personal Info"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:layout_marginTop="6dp" />
+
+        <!-- Profile photo & pick button -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="12dp">
+
+            <ImageView
+                android:id="@+id/ivProfilePhoto"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:src="@drawable/ic_profile"
+                android:scaleType="centerCrop"
+                android:background="@drawable/input_bg"
+                android:padding="6dp" />
+
+            <Button
+                android:id="@+id/btnPickProfilePhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choose Photo"
+                android:layout_marginStart="12dp"
+                android:background="@drawable/btn_gradient"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/etFullName"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Full Name"
+            android:background="@drawable/input_bg"
+            android:padding="12dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#DDDDDD" />
+
+        <EditText
+            android:id="@+id/etAddress2"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/input_bg"
+            android:hint="Address Line 2 (optional)"
+            android:padding="12dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#DDDDDD" />
+
+        <EditText
+            android:id="@+id/etPhone"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Phone Number"
+            android:inputType="phone"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/input_bg"
+            android:padding="12dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#DDDDDD"/>
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Email Address"
+            android:inputType="textEmailAddress"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/input_bg"
+            android:padding="12dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#DDDDDD"/>
+
+        <EditText
+            android:id="@+id/etDob"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Date of Birth (optional)"
+            android:focusable="false"
+            android:clickable="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/input_bg"
+            android:padding="12dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#DDDDDD" />
+
+        <!-- SECTION 2: Address -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:layout_marginTop="18dp" />
+
+        <EditText
+            android:id="@+id/etAddress1"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Address Line 1"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/input_bg"
+            android:padding="12dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#DDDDDD"/>
+
+        <EditText
+            android:id="@+id/etCity"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="City"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/input_bg"
+            android:padding="12dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#DDDDDD"/>
+
+        <EditText
+            android:id="@+id/etState"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="State"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/input_bg"
+            android:padding="12dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#DDDDDD"/>
+
+        <EditText
+            android:id="@+id/etPincode"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Pincode"
+            android:inputType="number"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/input_bg"
+            android:padding="12dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#DDDDDD"/>
+
+        <!-- SECTION 3: Documents -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Documents"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:layout_marginTop="18dp" />
+
+        <!-- Aadhar Front -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/ivAadharFront"
+                android:layout_width="110dp"
+                android:layout_height="70dp"
+                android:background="@drawable/input_bg"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_doc_placeholder"/>
+
+            <Button
+                android:id="@+id/btnPickAadharFront"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Upload Aadhar Front"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/btn_gradient"
+                android:textColor="#FFFFFF"/>
+        </LinearLayout>
+
+        <!-- Aadhar Back -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/ivAadharBack"
+                android:layout_width="110dp"
+                android:layout_height="70dp"
+                android:background="@drawable/input_bg"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_doc_placeholder"/>
+
+            <Button
+                android:id="@+id/btnPickAadharBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Upload Aadhar Back"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/btn_gradient"
+                android:textColor="#FFFFFF"/>
+        </LinearLayout>
+
+        <!-- PAN Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/ivPan"
+                android:layout_width="110dp"
+                android:layout_height="70dp"
+                android:background="@drawable/input_bg"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_doc_placeholder"/>
+
+            <Button
+                android:id="@+id/btnPickPan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Upload PAN"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/btn_gradient"
+                android:textColor="#FFFFFF"/>
+        </LinearLayout>
+
+        <!-- SECTION 4: Notification Settings -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notification Settings"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:layout_marginTop="18dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="EMI notifications"
+                    android:textColor="#FFFFFF"/>
+
+                <Switch
+                    android:id="@+id/switchEmi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#33FFFFFF"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Delivery updates"
+                    android:textColor="#FFFFFF"/>
+
+                <Switch
+                    android:id="@+id/switchDelivery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#33FFFFFF"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Registration updates"
+                    android:textColor="#FFFFFF"/>
+
+                <Switch
+                    android:id="@+id/switchRegistration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#33FFFFFF"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Insurance updates"
+                    android:textColor="#FFFFFF"/>
+
+                <Switch
+                    android:id="@+id/switchInsurance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#33FFFFFF"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingTop="6dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Number plate updates"
+                    android:textColor="#FFFFFF"/>
+
+                <Switch
+                    android:id="@+id/switchNumberPlate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Save -->
+        <Button
+            android:id="@+id/btnSaveProfile"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="18dp"
+            android:text="Save &amp; Continue"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:background="@drawable/btn_gradient"
+            android:textColor="#FFFFFF"/>
+
+        <View android:layout_height="22dp" android:layout_width="match_parent" />
+
+    </LinearLayout>
+</ScrollView>

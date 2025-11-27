@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_top">#1F1B24</color>        <!-- deep dark -->
+    <color name="bg_mid">#3A2B20</color>        <!-- dark brown -->
+    <color name="bg_bottom">#F26B00</color>     <!-- orange accent -->
+    <color name="ribbon_orange">#FF7A00</color>
+    <color name="white">#FFFFFF</color>
+    <color name="muted">#BDBDBD</color>
+    <color name="button_primary">#6A4E29</color>
+    <color name="button_secondary">#222222</color>
+
+</resources>
