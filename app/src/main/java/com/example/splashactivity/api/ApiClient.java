@@ -9,7 +9,7 @@ public class ApiClient {
 
     private static Retrofit retrofit = null;
 
-    private static final String BASE_URL = "http://10.0.2.2/motovista_api/";
+    private static final String BASE_URL = "https://p7n15hpc-80.inc1.devtunnels.ms/motovista_api/";
 
     public static Retrofit getClient() {
 

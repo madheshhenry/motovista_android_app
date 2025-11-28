@@ -90,7 +90,7 @@ public class UserLoginActivity extends AppCompatActivity {
 
                 Toast.makeText(UserLoginActivity.this, resp.getMessage(), Toast.LENGTH_SHORT).show();
 
-                startActivity(new Intent(UserLoginActivity.this, HomeActivity.class));
+                startActivity(new Intent(UserLoginActivity.this,UserHomeActivity.class));
                 finish();
             }
 

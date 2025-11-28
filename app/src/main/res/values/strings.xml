@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">SplashActivity</string>
+    <string name="back">Back</string>
+    <string name="admin_dashboard">ADMIN DASHBOARD</string>
+
 </resources>

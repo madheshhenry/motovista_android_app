@@ -6,6 +6,10 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" tools:ignore="ScopedStorage" />
+
+
 
     <application
         android:allowBackup="true"
@@ -15,6 +19,20 @@
         android:theme="@style/Theme.SplashActivity"
         android:usesCleartextTraffic="true">
 
+        <!-- ========= ADMIN DASHBOARD ========= -->
+        <activity
+            android:name=".admin.AdminDashboardActivity"
+            android:exported="true" />
+
+        <!-- ========= SUB MENUS INSIDE ADMIN DASHBOARD ========= -->
+        <activity android:name=".admin.CustomerDetailsActivity" />
+        <activity android:name=".admin.EmiLedgerActivity" />
+        <activity android:name=".admin.RegisterLedgerActivity" />
+        <activity android:name=".admin.InsuranceDetailsActivity" />
+        <activity android:name=".admin.NotificationActivity" />
+        <activity android:name=".admin.ApplicationActivity" />
+        <activity android:name=".admin.NewBikesActivity" />
+        <activity android:name=".admin.SecondHandBikesActivity" />
 
         <!-- Needed for older network libraries -->
         <uses-library android:name="org.apache.http.legacy" android:required="false" />
@@ -48,9 +66,14 @@
         <activity
             android:name=".CreateAccountActivity"
             android:exported="true" />
+
         <!-- ========= SETUP PROFILE SCREEN ========= -->
-        <activity android:name=".ProfileSetupActivity"
+        <activity
+            android:name=".ProfileSetupActivity"
             android:exported="true" />
+
+        <activity android:name=".UserHomeActivity"
+            android:exported="true"/>
 
 
     </application>

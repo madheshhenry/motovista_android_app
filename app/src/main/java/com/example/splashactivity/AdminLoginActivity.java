@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.splashactivity.api.ApiClient;
 import com.example.splashactivity.api.ApiService;
 import com.example.splashactivity.models.DefaultResponse;
+import com.example.splashactivity.admin.AdminDashboardActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -51,23 +52,24 @@ public class AdminLoginActivity extends AppCompatActivity {
             public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
 
                 if (response.isSuccessful() && response.body() != null) {
-                    DefaultResponse res = response.body();
 
-                    Toast.makeText(AdminLoginActivity.this, res.getMessage(), Toast.LENGTH_SHORT).show();
+                    // SAVE ADMIN LOGIN STATUS
+                    getSharedPreferences("APP_PREF", MODE_PRIVATE)
+                            .edit()
+                            .putBoolean("ADMIN_LOGGED_IN", true)
+                            .apply();
 
-                    if (res.getStatus().equals("success")) {
-                        startActivity(new Intent(AdminLoginActivity.this, MainActivity.class));
-                        finish();
-                    }
-
+                    // OPEN DASHBOARD
+                    startActivity(new Intent(AdminLoginActivity.this, AdminDashboardActivity.class));
+                    finish();
                 } else {
-                    Toast.makeText(AdminLoginActivity.this, "Server error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminLoginActivity.this, "Invalid login", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<DefaultResponse> call, Throwable t) {
-                Toast.makeText(AdminLoginActivity.this, "Failed: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(AdminLoginActivity.this, "Network Error", Toast.LENGTH_LONG).show();
             }
         });
     }
