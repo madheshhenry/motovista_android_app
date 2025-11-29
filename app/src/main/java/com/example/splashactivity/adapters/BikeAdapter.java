@@ -1,6 +1,7 @@
 package com.example.splashactivity.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +11,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
+import com.example.splashactivity.BikeDetailsActivity;
 import com.example.splashactivity.R;
 import com.example.splashactivity.models.BikeModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -20,22 +22,18 @@ public class BikeAdapter extends RecyclerView.Adapter<BikeAdapter.ViewHolder> {
 
     Context context;
     List<BikeModel> list;
-    OnBikeClickListener listener;
 
-    public interface OnBikeClickListener {
-        void onBikeClick(BikeModel bike);
-    }
+    String BASE_URL = "http://10.78.84.188/motovista_api/";
 
-    public BikeAdapter(Context context, List<BikeModel> list, OnBikeClickListener listener) {
+    public BikeAdapter(Context context, List<BikeModel> list) {
         this.context = context;
         this.list = list;
-        this.listener = listener;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.row_bike_item, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.bike_item, parent, false);
         return new ViewHolder(view);
     }
 
@@ -43,13 +41,21 @@ public class BikeAdapter extends RecyclerView.Adapter<BikeAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         BikeModel bike = list.get(position);
 
-        holder.tvBrand.setText(bike.getBrand());
-        holder.tvModel.setText(bike.getModel());
-        holder.tvPrice.setText("₹ " + bike.getPrice());
+        holder.txtBrandModel.setText(bike.getBrand() + " " + bike.getModel());
+        holder.txtPrice.setText("₹ " + bike.getPrice());
 
-        Glide.with(context).load(bike.getImage()).into(holder.imgBike);
+        String imgUrl = BASE_URL + bike.getImg_top();
+        Picasso.get()
+                .load(imgUrl)
+                .placeholder(R.drawable.bike_placeholder)
+                .error(R.drawable.bike_placeholder)
+                .into(holder.imgBike);
 
-        holder.itemView.setOnClickListener(v -> listener.onBikeClick(bike));
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, BikeDetailsActivity.class);
+            intent.putExtra("bike", bike);   // ✔ correct key
+            context.startActivity(intent);
+        });
     }
 
     @Override
@@ -57,16 +63,15 @@ public class BikeAdapter extends RecyclerView.Adapter<BikeAdapter.ViewHolder> {
         return list.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgBike;
-        TextView tvBrand, tvModel, tvPrice;
+        TextView txtBrandModel, txtPrice;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imgBike = itemView.findViewById(R.id.imgBike);
-            tvBrand = itemView.findViewById(R.id.tvBrand);
-            tvModel = itemView.findViewById(R.id.tvModel);
-            tvPrice = itemView.findViewById(R.id.tvPrice);
+            txtBrandModel = itemView.findViewById(R.id.txtBrandModel);
+            txtPrice = itemView.findViewById(R.id.txtPrice);
         }
     }
 }

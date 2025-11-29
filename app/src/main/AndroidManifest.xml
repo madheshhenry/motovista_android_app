@@ -2,13 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.splashactivity">
 
-    <!-- ===== APP PERMISSIONS ===== -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
-    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" tools:ignore="ScopedStorage" />
 
+    <!-- For Android 12 and below -->
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- For Android 13+ (images only) -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
 
     <application
@@ -19,25 +23,11 @@
         android:theme="@style/Theme.SplashActivity"
         android:usesCleartextTraffic="true">
 
-        <!-- ========= ADMIN DASHBOARD ========= -->
-        <activity
-            android:name=".admin.AdminDashboardActivity"
-            android:exported="true" />
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
 
-        <!-- ========= SUB MENUS INSIDE ADMIN DASHBOARD ========= -->
-        <activity android:name=".admin.CustomerDetailsActivity" />
-        <activity android:name=".admin.EmiLedgerActivity" />
-        <activity android:name=".admin.RegisterLedgerActivity" />
-        <activity android:name=".admin.InsuranceDetailsActivity" />
-        <activity android:name=".admin.NotificationActivity" />
-        <activity android:name=".admin.ApplicationActivity" />
-        <activity android:name=".admin.NewBikesActivity" />
-        <activity android:name=".admin.SecondHandBikesActivity" />
-
-        <!-- Needed for older network libraries -->
-        <uses-library android:name="org.apache.http.legacy" android:required="false" />
-
-        <!-- ========= SPLASH SCREEN (LAUNCHER) ========= -->
+        <!-- Splash -->
         <activity
             android:name=".SplashActivity"
             android:exported="true">
@@ -47,34 +37,28 @@
             </intent-filter>
         </activity>
 
-        <!-- ========= MAIN DASHBOARD SCREEN ========= -->
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
+        <!-- Dashboard -->
+        <activity android:name=".MainActivity" android:exported="false" />
+        <activity android:name=".UserHomeActivity" android:exported="true" />
 
-        <!-- ========= USER LOGIN ========= -->
-        <activity
-            android:name=".UserLoginActivity"
-            android:exported="true" />
+        <!-- Login -->
+        <activity android:name=".UserLoginActivity" android:exported="true" />
+        <activity android:name=".AdminLoginActivity" android:exported="true" />
 
-        <!-- ========= ADMIN LOGIN ========= -->
-        <activity
-            android:name=".AdminLoginActivity"
-            android:exported="true" />
+        <!-- Account & Profile -->
+        <activity android:name=".CreateAccountActivity" android:exported="true" />
+        <activity android:name=".ProfileSetupActivity" android:exported="true" />
 
-        <!-- ========= CREATE ACCOUNT SCREEN ========= -->
-        <activity
-            android:name=".CreateAccountActivity"
-            android:exported="true" />
-
-        <!-- ========= SETUP PROFILE SCREEN ========= -->
-        <activity
-            android:name=".ProfileSetupActivity"
-            android:exported="true" />
-
-        <activity android:name=".UserHomeActivity"
-            android:exported="true"/>
-
+        <!-- Admin Dashboard -->
+        <activity android:name=".admin.AdminDashboardActivity" android:exported="true" />
+        <activity android:name=".admin.CustomerDetailsActivity" />
+        <activity android:name=".admin.EmiLedgerActivity" />
+        <activity android:name=".admin.RegisterLedgerActivity" />
+        <activity android:name=".admin.InsuranceDetailsActivity" />
+        <activity android:name=".admin.NotificationActivity" />
+        <activity android:name=".admin.ApplicationActivity" />
+        <activity android:name=".admin.NewBikesActivity" />
+        <activity android:name=".admin.SecondHandBikesActivity" />
 
     </application>
 

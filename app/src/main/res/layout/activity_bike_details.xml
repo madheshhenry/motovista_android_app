@@ -8,61 +8,70 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:padding="20dp"
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/imgMainBike"
-            android:layout_width="350dp"
-            android:layout_height="220dp"
-            android:scaleType="centerCrop"
-            android:background="@drawable/rounded_white"
-            android:layout_marginBottom="18dp" />
+        <!-- Top image / Slider area -->
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/imageSlider"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="#FFFFFF"
+            android:elevation="6dp"
+            android:clipToPadding="false"
+            android:padding="3dp" />
 
+        <!-- Brand + Model -->
         <TextView
-            android:id="@+id/tvBrand"
-            android:layout_width="wrap_content"
+            android:id="@+id/txtBrandModel"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
+            android:text="Brand Model"
+            android:layout_marginTop="20dp"
+            android:textSize="26sp"
             android:textStyle="bold"
-            android:textSize="22sp" />
+            android:textColor="#000" />
 
+        <!-- Price -->
         <TextView
-            android:id="@+id/tvModel"
+            android:id="@+id/txtPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
+            android:text="₹ 00000"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#D81B60"
+            android:layout_marginTop="6dp" />
+
+        <!-- Engine -->
+        <TextView
+            android:id="@+id/txtEngine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Engine CC"
             android:textSize="18sp"
-            android:layout_marginTop="4dp" />
+            android:layout_marginTop="12dp"
+            android:textColor="#444" />
 
+        <!-- Description Title -->
         <TextView
-            android:id="@+id/tvPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#FFE500"
-            android:textStyle="bold"
+            android:text="Description"
+            android:layout_marginTop="20dp"
             android:textSize="20sp"
-            android:layout_marginTop="10dp" />
+            android:textStyle="bold"
+            android:textColor="#000"/>
 
+        <!-- Description -->
         <TextView
-            android:id="@+id/tvDescription"
+            android:id="@+id/txtDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp"
-            android:layout_marginTop="16dp"
-            android:lineSpacingExtra="5dp" />
-
-        <Button
-            android:id="@+id/btnContact"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="Contact For Buying"
-            android:textStyle="bold"
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/btn_gradient" />
+            android:text="Bike description goes here..."
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            android:textColor="#444" />
 
     </LinearLayout>
-
 </ScrollView>

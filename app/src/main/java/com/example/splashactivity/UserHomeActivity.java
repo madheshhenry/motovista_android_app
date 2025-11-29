@@ -1,5 +1,5 @@
 package com.example.splashactivity;
-
+import java.util.ArrayList;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -21,50 +21,34 @@ import retrofit2.Response;
 
 public class UserHomeActivity extends AppCompatActivity {
 
-    RecyclerView recyclerBikes;
+    RecyclerView recycler;
+    List<BikeModel> bikes = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_home);
 
-        recyclerBikes = findViewById(R.id.recyclerBikes);
-        recyclerBikes.setLayoutManager(new GridLayoutManager(this, 2));
+        recycler = findViewById(R.id.recyclerBikes);
+        recycler.setLayoutManager(new GridLayoutManager(this, 2));
 
         loadBikes();
     }
 
     private void loadBikes() {
         ApiService api = ApiClient.getClient().create(ApiService.class);
-        Call<List<BikeModel>> call = api.getBikes();
-
-        call.enqueue(new Callback<List<BikeModel>>() {
+        api.getBikes().enqueue(new Callback<List<BikeModel>>() {
             @Override
             public void onResponse(Call<List<BikeModel>> call, Response<List<BikeModel>> response) {
-                if (response.isSuccessful() && response.body() != null) {
-
-                    BikeAdapter adapter = new BikeAdapter(
-                            UserHomeActivity.this,
-                            response.body(),
-                            bike -> {
-                                Intent i = new Intent(UserHomeActivity.this, BikeDetailsActivity.class);
-                                i.putExtra("bike_id", bike.getId());
-                                startActivity(i);
-                            });
-
-                    recyclerBikes.setAdapter(adapter);
-
-                } else {
-                    Toast.makeText(UserHomeActivity.this,
-                            "No bikes found", Toast.LENGTH_SHORT).show();
-                }
+                bikes = response.body();
+                recycler.setAdapter(new BikeAdapter(UserHomeActivity.this, bikes));
             }
 
             @Override
             public void onFailure(Call<List<BikeModel>> call, Throwable t) {
-                Toast.makeText(UserHomeActivity.this,
-                        "Error: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(UserHomeActivity.this, "Failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
+
 }
