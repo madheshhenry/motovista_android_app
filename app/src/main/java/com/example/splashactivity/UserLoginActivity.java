@@ -86,7 +86,8 @@ public class UserLoginActivity extends AppCompatActivity {
 
                 // Save user ID
                 SharedPreferences prefs = getSharedPreferences("motovista_prefs", MODE_PRIVATE);
-                prefs.edit().putInt("user_id", resp.getUser().getId()).apply();
+                prefs.edit().putInt("user_id", resp.getUserId()).apply();
+
 
                 Toast.makeText(UserLoginActivity.this, resp.getMessage(), Toast.LENGTH_SHORT).show();
 

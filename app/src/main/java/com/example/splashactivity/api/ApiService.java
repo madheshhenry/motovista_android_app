@@ -20,11 +20,14 @@ public interface ApiService {
     // -------------------- USER REGISTER --------------------
     @FormUrlEncoded
     @POST("register.php")
-    Call<DefaultResponse> registerUser(
-            @Field("full_name") String fullName,
+    Call<DefaultResponse> register(
+            @Field("full_name") String full_name,
             @Field("email") String email,
             @Field("password") String password
     );
+
+
+
 
     // -------------------- USER LOGIN --------------------
     @FormUrlEncoded

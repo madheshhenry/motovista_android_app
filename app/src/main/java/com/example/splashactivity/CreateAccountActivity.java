@@ -61,8 +61,8 @@ public class CreateAccountActivity extends AppCompatActivity {
         }
 
         ApiService api = ApiClient.getClient().create(ApiService.class);
-
-        Call<DefaultResponse> call = api.registerUser(fullName, email, password);
+        Call<DefaultResponse> call = api.register(fullName, email, password);
+        // FIXED
 
         call.enqueue(new Callback<DefaultResponse>() {
             @Override
@@ -82,9 +82,20 @@ public class CreateAccountActivity extends AppCompatActivity {
                 Toast.makeText(CreateAccountActivity.this, res.getMessage(), Toast.LENGTH_LONG).show();
 
                 if (res.getStatus().equals("success")) {
-                    startActivity(new Intent(CreateAccountActivity.this, ProfileSetupActivity.class));
+
+                    // Save user_id to SharedPreferences
+                    int userId = res.getUserId();
+                    getSharedPreferences("motovista_prefs", MODE_PRIVATE)
+                            .edit()
+                            .putInt("user_id", userId)
+                            .apply();
+
+
+                    Intent intent = new Intent(CreateAccountActivity.this, ProfileSetupActivity.class);
+                    startActivity(intent);
                     finish();
                 }
+
             }
 
             @Override
