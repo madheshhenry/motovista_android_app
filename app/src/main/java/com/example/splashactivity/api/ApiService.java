@@ -1,9 +1,9 @@
 package com.example.splashactivity.api;
-
+import com.example.splashactivity.models.BikeDetailsResponse;
 import com.example.splashactivity.models.DefaultResponse;
 import com.example.splashactivity.models.BikeModel;
-
 import java.util.List;
+import retrofit2.http.Query;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -86,8 +86,8 @@ public interface ApiService {
     @GET("get_bikes.php")
     Call<List<BikeModel>> getBikes();
 
-    @FormUrlEncoded
-    @POST("bike_bike_details.php")
-    Call<BikeModel> getBikeDetails(@Field("id") String bikeId);
+    @GET("get_bike_details.php")
+    Call<BikeDetailsResponse> getBikeDetails(@Query("id") String id);
+
 
 }

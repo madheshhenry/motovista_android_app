@@ -60,6 +60,9 @@
         <activity android:name=".admin.NewBikesActivity" />
         <activity android:name=".admin.SecondHandBikesActivity" />
 
+        <activity android:name=".BikeDetailsActivity" />
+
+
     </application>
 
 </manifest>

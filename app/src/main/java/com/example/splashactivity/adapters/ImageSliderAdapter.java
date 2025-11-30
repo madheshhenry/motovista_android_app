@@ -16,8 +16,8 @@ import java.util.List;
 
 public class ImageSliderAdapter extends RecyclerView.Adapter<ImageSliderAdapter.ViewHolder> {
 
-    Context context;
-    List<String> images;
+    private final Context context;
+    private final List<String> images;
 
     public ImageSliderAdapter(Context context, List<String> images) {
         this.context = context;
@@ -33,7 +33,11 @@ public class ImageSliderAdapter extends RecyclerView.Adapter<ImageSliderAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Picasso.get().load(images.get(position)).placeholder(R.drawable.bike_placeholder).into(holder.imgSlider);
+        Picasso.get()
+                .load(images.get(position))
+                .placeholder(R.drawable.bike_placeholder)
+                .error(R.drawable.bike_placeholder)
+                .into(holder.imgSlider);
     }
 
     @Override
@@ -41,9 +45,9 @@ public class ImageSliderAdapter extends RecyclerView.Adapter<ImageSliderAdapter.
         return images.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgSlider;
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             imgSlider = itemView.findViewById(R.id.imgSlider);
         }

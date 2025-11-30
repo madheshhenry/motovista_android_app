@@ -9,11 +9,11 @@ public class ApiClient {
 
     private static Retrofit retrofit = null;
 
-    private static final String BASE_URL = "https://p7n15hpc-80.inc1.devtunnels.ms/motovista_api/";
+    // LOCALHOST XAMPP SERVER URL
+    private static final String BASE_URL = "http://192.168.0.104/motovista_api/";
 
     public static Retrofit getClient() {
 
-        // LOGGING — THIS IS WHAT FIXES THE DEBUGGING ISSUE
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
@@ -25,11 +25,10 @@ public class ApiClient {
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
-                    .client(client)   // VERY IMPORTANT
+                    .client(client)
                     .build();
         }
 
         return retrofit;
     }
-
 }

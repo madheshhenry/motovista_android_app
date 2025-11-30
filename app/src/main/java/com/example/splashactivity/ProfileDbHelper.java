@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class ProfileDbHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "motovista_profiles.db";
+    private static final String DATABASE_NAME = "motovista_db.db";
     private static final int DATABASE_VERSION = 1;
 
     private static final String SQL_CREATE =

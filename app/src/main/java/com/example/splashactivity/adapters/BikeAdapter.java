@@ -23,7 +23,8 @@ public class BikeAdapter extends RecyclerView.Adapter<BikeAdapter.ViewHolder> {
     Context context;
     List<BikeModel> list;
 
-    String BASE_URL = "http://10.78.84.188/motovista_api/";
+    // IMPORTANT: use SAME base url everywhere
+    private static final String BASE_URL = "http://192.168.0.104/motovista_api/";
 
     public BikeAdapter(Context context, List<BikeModel> list) {
         this.context = context;
@@ -51,11 +52,13 @@ public class BikeAdapter extends RecyclerView.Adapter<BikeAdapter.ViewHolder> {
                 .error(R.drawable.bike_placeholder)
                 .into(holder.imgBike);
 
+        // Open details screen – pass only ID
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, BikeDetailsActivity.class);
-            intent.putExtra("bike", bike);   // ✔ correct key
+            intent.putExtra("bike_id", bike.getId());
             context.startActivity(intent);
         });
+
     }
 
     @Override
