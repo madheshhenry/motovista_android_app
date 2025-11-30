@@ -1,5 +1,5 @@
 package com.example.splashactivity;
-import java.util.ArrayList;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -12,7 +12,9 @@ import com.example.splashactivity.adapters.BikeAdapter;
 import com.example.splashactivity.api.ApiClient;
 import com.example.splashactivity.api.ApiService;
 import com.example.splashactivity.models.BikeModel;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -23,6 +25,7 @@ public class UserHomeActivity extends AppCompatActivity {
 
     RecyclerView recycler;
     List<BikeModel> bikes = new ArrayList<>();
+    BottomNavigationView bottomNav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +35,13 @@ public class UserHomeActivity extends AppCompatActivity {
         recycler = findViewById(R.id.recyclerBikes);
         recycler.setLayoutManager(new GridLayoutManager(this, 2));
 
+        bottomNav = findViewById(R.id.bottomNav);
+
+        // highlight Home icon by default
+        bottomNav.setSelectedItemId(R.id.nav_home);
+
         loadBikes();
+        setupBottomNav();
     }
 
     private void loadBikes() {
@@ -51,4 +60,29 @@ public class UserHomeActivity extends AppCompatActivity {
         });
     }
 
+    private void setupBottomNav() {
+
+        bottomNav.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+
+            if (id == R.id.nav_home) {
+                return true; // already in home screen
+            }
+            else if (id == R.id.nav_category) {
+                startActivity(new Intent(UserHomeActivity.this, CategoryActivity.class));
+            }
+            else if (id == R.id.nav_emi) {
+                startActivity(new Intent(UserHomeActivity.this, EmiCalculatorActivity.class));
+            }
+            else if (id == R.id.nav_notify) {
+                startActivity(new Intent(UserHomeActivity.this, NotificationActivity.class));
+            }
+            else if (id == R.id.nav_profile) {
+                startActivity(new Intent(UserHomeActivity.this, UserProfileActivity.class));
+            }
+
+            overridePendingTransition(0, 0);
+            return true;
+        });
+    }
 }

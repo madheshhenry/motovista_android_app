@@ -208,10 +208,20 @@ public class ProfileSetupActivity extends AppCompatActivity {
                     DefaultResponse res = response.body();
                     Toast.makeText(ProfileSetupActivity.this, res.getMessage(), Toast.LENGTH_LONG).show();
                     if ("success".equalsIgnoreCase(res.getStatus())) {
-                        // go to main/home
-                        startActivity(new Intent(ProfileSetupActivity.this, MainActivity.class));
+
+                        // Mark user as logged in
+                        getSharedPreferences("motovista_prefs", MODE_PRIVATE)
+                                .edit()
+                                .putBoolean("logged_in", true)
+                                .apply();
+
+                        // Move to Home screen
+                        Intent intent = new Intent(ProfileSetupActivity.this, UserHomeActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
                         finish();
                     }
+
                 } else {
                     Toast.makeText(ProfileSetupActivity.this, "Server error", Toast.LENGTH_LONG).show();
                 }
